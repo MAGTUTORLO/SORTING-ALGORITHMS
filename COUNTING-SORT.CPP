@@ -1,7 +1,6 @@
 #include <iostream>
-
-/* run this program using the console pauser or add your own getch, system("pause") or input loop */
 using namespace std;
+
 int getMax(int array[], int size) {
    int max = array[1];
    for(int i = 2; i<=size; i++) {
@@ -14,34 +13,38 @@ int getMax(int array[], int size) {
 void countSort(int *array, int size) {
    int output[size+1];
    int max = getMax(array, size);
-   int count[max+1];    
-   for(int i = 0; i<=max; i++)
-      count[i] = 0;    
-   for(int i = 1; i <=size; i++)
-      count[array[i]]++;    
-   for(int i = 1; i<=max; i++)
-      count[i] += count[i-1];    
+   int count[max+1];
+   for(int i = 0; i<=max; i++){
+      count[i] = 0;
+      }
+   for(int i = 1; i <=size; i++){
+      count[array[i]]++;
+      }
+   for(int i = 1; i<=max; i++){
+      count[i] += count[i-1];
+      }
    for(int i = size; i>=1; i--) {
       output[count[array[i]]] = array[i];
-      count[array[i]] -= 1; 
+      count[array[i]] -= 1;
    }
    for(int i = 1; i<=size; i++) {
-      array[i] = output[i]; 
+      array[i] = output[i];
    }
 }
 
 void display(int *array, int size) {
-   for(int i = 1; i<=size; i++)
+   for(int i = 1; i<=size; i++){
       cout << array[i] << " ";
+      }
    cout << endl;
 }
 
 int main(int argc, char** argv) {
 
-	int n;
+   int n;
    cout << "Enter the number of elements: ";
    cin >> n;
-   int arr[n+1];    
+   int arr[n+1];
    cout << "Enter elements:" << endl;
    for(int i = 1; i<=n; i++) {
       cin >> arr[i];
@@ -51,6 +54,5 @@ int main(int argc, char** argv) {
    countSort(arr, n);
    cout << "Array after Sorting: ";
    display(arr, n);
-
-	return 0;
+   return 0;
 }
