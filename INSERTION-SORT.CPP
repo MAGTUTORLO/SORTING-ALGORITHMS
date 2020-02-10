@@ -1,14 +1,13 @@
 #include <iostream>
 using namespace std;
 
-void insertion(int ar[99], int n){
+void insertion_sort(int ar[99], int n){
 	int i,j,temp;
 	for (i=1;i<=n;i++){
 		temp = ar[i];
-		j=i-1;
-		while (j>=0 && ar[j] > temp){
+
+		for (j=i-1;j>=0 && ar[j] > temp;j=j-1){
 			ar[j+1]= ar[j];
-			j=j-1;
 		}
 		ar[j+1]=temp;
 	}
@@ -30,7 +29,7 @@ int main(int argc, char** argv){
 	}
 
 	cout << endl << "Array after Sorting: ";
-	insertion(arr,size);
+	insertion_sort(arr,size);
 	for (i=0;i<=size;i++){
 		cout << arr[i] << " ";
 	}
